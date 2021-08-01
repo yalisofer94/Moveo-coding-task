@@ -20,7 +20,7 @@ class Square extends Component {
         if (this.state.playing === false){
 
             audioTag.load();
-            //audioTag.play();
+            audioTag.play();
             this.setState({playing: true});
         } else { audioTag.pause(); this.setState({playing: false});}
         
