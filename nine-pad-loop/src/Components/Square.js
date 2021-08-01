@@ -10,10 +10,11 @@ class Square extends Component {
     playSound() {
         if (this.state.playing){this.props.onClick(this.props.name, true)}
         else {this.props.onClick(this.props.name, false)}
-        const player = new Tone.Player(this.props.song).toDestination();
+        /*const player = new Tone.Player(this.props.song).toDestination();
         Tone.loaded().then(() => {
             player.start();
-        });
+        });*/
+        
         const audioTag = document.getElementById(this.props.name);
         audioTag.currentTimer = 0;
         if (this.state.playing === false){
