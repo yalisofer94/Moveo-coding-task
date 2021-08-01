@@ -87,13 +87,19 @@ class Pad extends Component {
     }
 
     playAll() {
-        this.state.on.map(song => (document.getElementById(song).play()));
-        console.log(this.state.on);
+        if (!this.state.active){
+            this.setState({active: true});
+            this.state.on.map(song => (document.getElementById(song).play()));
+            console.log(this.state.on);
+        }
     }
 
     stopAll() {
-        this.state.on.map(song => (document.getElementById(song).pause()));
-        console.log(this.state.on);
+        if (this.state.active){
+            this.setState({active: false});
+            this.state.on.map(song => (document.getElementById(song).pause()));
+            console.log(this.state.on);
+        }
     }
 
     render() {
@@ -101,8 +107,8 @@ class Pad extends Component {
             <div style={{backgroundColor:"yellow", height:"100%"}}>
                 <h1>9 Pads Loop Machine!</h1>
                 <div>
-                    <Button onClick={this.playStopAll} variant="contained" color="primary" style={{display:'inline-block', marginLeft:'30px'}}>Play</Button>
-                    <Button onClick={this.playStopAll} variant="contained" color="secondary" style={{display:'inline-block', marginLeft:'30px'}}>Stop</Button>
+                    <Button onClick={this.playAll} variant="contained" color="primary" style={{display:'inline-block', marginLeft:'30px'}}>Play</Button>
+                    <Button onClick={this.stopAll} variant="contained" color="secondary" style={{display:'inline-block', marginLeft:'30px'}}>Stop</Button>
                 </div>
                 {songs.map(song => (
                     <Square key={song.key} song={song.url} onClick={this.mark} name={song.key} id={song.song}/>
