@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Square from './Square';
+import Button from '@material-ui/core/Button';
 const songs = [
     {
         "key": "Q",
@@ -99,7 +100,10 @@ class Pad extends Component {
         return (
             <div style={{backgroundColor:"yellow", height:"100%"}}>
                 <h1>9 Pads Loop Machine!</h1>
-                <button onClick={this.playStopAll} style={{display:'block', marginLeft:'30px'}}>ON/OFF</button>
+                <div>
+                    <Button onClick={this.playStopAll} variant="contained" color="primary" style={{display:'inline-block', marginLeft:'30px'}}>Play</Button>
+                    <Button onClick={this.playStopAll} variant="contained" color="secondary" style={{display:'inline-block', marginLeft:'30px'}}>Stop</Button>
+                </div>
                 {songs.map(song => (
                     <Square key={song.key} song={song.url} onClick={this.mark} name={song.key} id={song.song}/>
                 ))}

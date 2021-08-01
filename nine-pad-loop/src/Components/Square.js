@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import * as Tone from 'tone';
 class Square extends Component {
     constructor (props){
         super(props);
@@ -10,12 +10,16 @@ class Square extends Component {
     playSound() {
         if (this.state.playing){this.props.onClick(this.props.name, true)}
         else {this.props.onClick(this.props.name, false)}
-        
+        const player = new Tone.Player(this.props.song).toDestination();
+        Tone.loaded().then(() => {
+            player.start();
+        });
         const audioTag = document.getElementById(this.props.name);
         audioTag.currentTimer = 0;
         if (this.state.playing === false){
+
             audioTag.load();
-            audioTag.play();
+            //audioTag.play();
             this.setState({playing: true});
         } else { audioTag.pause(); this.setState({playing: false});}
         
