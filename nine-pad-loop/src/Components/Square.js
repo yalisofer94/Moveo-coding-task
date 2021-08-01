@@ -8,21 +8,23 @@ class Square extends Component {
     };
 
     playSound() {
-        if (this.state.playing){this.props.onClick(this.props.name, true)}
-        else {this.props.onClick(this.props.name, false)}
-        /*const player = new Tone.Player(this.props.song).toDestination();
-        Tone.loaded().then(() => {
-            player.start();
-        });*/
+        if (this.state.playing){
+            this.props.onClick(this.props.name, true);
+            this.setState({playing: false});
+        }
+        else {
+            this.props.onClick(this.props.name, false);
+            this.setState({playing: true});
+        }
         
-        const audioTag = document.getElementById(this.props.name);
+        /*const audioTag = document.getElementById(this.props.name);
         audioTag.currentTimer = 0;
         if (this.state.playing === false){
 
             audioTag.load();
             audioTag.play();
             this.setState({playing: true});
-        } else { audioTag.pause(); this.setState({playing: false});}
+        } else { audioTag.pause(); this.setState({playing: false});}*/
         
     };
 
