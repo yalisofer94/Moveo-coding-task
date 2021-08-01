@@ -4,7 +4,7 @@ Creating a 9 pad loop machine. 🔔🔊📢
 
 To run - 
 
-### `cd nine-loop-pad`
+### `cd ./nine-pad-loop`
 ### `npm start`
 
 And start looping!
