@@ -1,6 +1,56 @@
 import React, { Component } from "react";
 import Square from './Square';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(1),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }));
+
+function NestedGrid() {
+    const classes = useStyles();
+  
+    function FormRow() {
+        return (
+        <React.Fragment>
+            <Grid item xs={4}>
+            <Paper className={classes.paper}>item</Paper>
+            </Grid>
+            <Grid item xs={4}>
+            <Paper className={classes.paper}>item</Paper>
+            </Grid>
+            <Grid item xs={4}>
+            <Paper className={classes.paper}>item</Paper>
+            </Grid>
+        </React.Fragment>
+        );
+    }
+    return(
+    <div className={classes.root}>
+      <Grid container spacing={1}>
+        <Grid container item xs={12} spacing={3}>
+          <FormRow />
+        </Grid>
+        <Grid container item xs={12} spacing={3}>
+          <FormRow />
+        </Grid>
+        <Grid container item xs={12} spacing={3}>
+          <FormRow />
+        </Grid>
+      </Grid>
+    </div>
+  );
+}
+
 const songs = [
     {
         "key": "Q",
@@ -110,11 +160,21 @@ class Pad extends Component {
                     <Button onClick={this.playAll} variant="contained" color="primary" style={{display:'inline-block', marginLeft:'30px'}}>Play</Button>
                     <Button onClick={this.stopAll} variant="contained" color="secondary" style={{display:'inline-block', marginLeft:'30px'}}>Stop</Button>
                 </div>
+                <Grid container>
                 {songs.map(song => (
-                    <Square key={song.key} song={song.url} onClick={this.mark} name={song.key} id={song.song}/>
+                    <Grid item xs={6} sm={3}>
+                        <Square key={song.key} song={song.url} onClick={this.mark} name={song.key} id={song.song}/>
+                    </Grid>
                 ))}
+                
+                </Grid>
             </div>
         )
     }
 }
 export default Pad;
+/*
+{songs.map(song => (
+    <Square key={song.key} song={song.url} onClick={this.mark} name={song.key} id={song.song}/>
+))}
+*/

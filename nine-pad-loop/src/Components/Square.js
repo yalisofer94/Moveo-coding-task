@@ -16,16 +16,6 @@ class Square extends Component {
             this.props.onClick(this.props.name, false);
             this.setState({playing: true});
         }
-        
-        /*const audioTag = document.getElementById(this.props.name);
-        audioTag.currentTimer = 0;
-        if (this.state.playing === false){
-
-            audioTag.load();
-            audioTag.play();
-            this.setState({playing: true});
-        } else { audioTag.pause(); this.setState({playing: false});}*/
-        
     };
 
     render(){

@@ -12,13 +12,9 @@ import logo from '../Images/logo.gif';
         render() {
           return (
               <>
-              <div style={{width:"100%"}}>
                 <a onClick={this.onclicking}> 
-                  <img src={logo} alt="Logo"/>
+                  <img src={logo} alt="Logo" style={{width:'40%',height:'30%'}}/>
                 </a> 
-              </div>
-              <div style={{display:'inline-block', justifyContent: 'right' }}>
-              </div>
               </>
           )
           }
